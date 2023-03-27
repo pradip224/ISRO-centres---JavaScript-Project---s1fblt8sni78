@@ -25,6 +25,9 @@
   .t-center {
     text-align: center;
   }
+  .flex-sp-between{
+    justify-content: space-between;
+  }
   .btn {
     padding: 10px;
   }
@@ -57,7 +60,7 @@
     color: white;
   }
   .input {
-    flex: 1;
+    /* flex: 1; */
     height: 100%;
     border: none;
     padding-left: 20px;
@@ -70,8 +73,8 @@
     border-radius: 10px;
     font-size: 25px;
     /* border: 1px solid; */
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
     background-color: #d9d9d9;
   }
   .searach-btn{
@@ -89,9 +92,9 @@
   }
   
   .parent{
-      display: flex;
+      /* display: flex; */
       margin-top: 5px;
-      justify-content: space-between;
+      /* justify-content: space-between; */
       width: 100%;
       font-size: 18px;
   }

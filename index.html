@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,26 +8,35 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <title>ISRO</title>
   </head>
   <body class="d-flex flex-vcenter">
     <div class="app-container">
-        <div class="logo d-flex flex-hcenter">
-            <img src="./isro_logo.png" width="100" height="100" alt="isro">
-            <h1 class="ml-20">ISRO centres</h1>
-        </div>
+      <div class="logo d-flex flex-hcenter">
+        <img src="./isro_logo.png" width="100" height="100" alt="isro" />
+        <h1 class="ml-20">ISRO centres</h1>
+      </div>
       <div class="head-container">
         <h2 class="card t-center">
           Search for ISRO centres based on place, state &amp; name
         </h2>
         <div class="search-container d-flex">
-          <div class="search-box w-50">
-            <input type="text" class="input js-input" placeholder="Type here..." />
-            <button class="searach-btn cursor js-search-btn" ><i class="fa fa-search"></i></button>
+          <div class="search-box d-flex flex-vcenter w-50">
+            <input
+              type="text"
+              class="input flex-1 js-input"
+              placeholder="Type here..."
+            />
+            <button class="searach-btn cursor js-search-btn">
+              <i class="fa fa-search"></i>
+            </button>
           </div>
 
           <button class="btn flex-1 card cursor js-city-btn">CITY</button>
@@ -36,7 +44,7 @@
           <button class="btn flex-1 card cursor js-center-btn">CENTER</button>
         </div>
       </div>
-      <div class="card-container"></div>
+      <div class="js-card-container"></div>
     </div>
     <script src="./App.js"></script>
   </body>
