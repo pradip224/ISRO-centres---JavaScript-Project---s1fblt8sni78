@@ -7,31 +7,20 @@ const centerBtn = document.getElementsByClassName("js-center-btn")[0];
 const cardContainer = document.getElementsByClassName("js-card-container")[0];
 
 //search filter by state ,name or place
-let selectedFilter;
+let selectedFilter='name';
 //jsonData holds the data fetched from the API
 let jsonData;
 
-//fetching data from the API
-async function getCenters() {
-  try {
-    const response = await fetch("https://isro.vercel.app/api/centres");
-    const data = await response.json();
-    jsonData = data.centres;
-    renderCenters(jsonData);
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 
 //rnders the card components inside the card-container
-function renderCenters(centers, selectedFilter = "all") {
+function renderCenters(centers = jsonData) {
   cardContainer.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
   //traverse through the array of objects and creates the card components as per the matched search string
   centers.forEach((center) => {
-    if (
-      selectedFilter === "all" ||
+    if (      
       center[selectedFilter]
         .toLowerCase()
         .includes(searchInput.value.toLowerCase())
@@ -56,12 +45,16 @@ function createCardElement(name, place, state) {
   w60.classList.add("w-60");
 
   const centerLabel = document.createElement("div");
-  centerLabel.innerText = "CENTER";
+  // centerLabel.innerText = "CENTER";
+  const centerTextNode = document.createTextNode('CENTER');
+  centerLabel.appendChild(centerTextNode);
   w60.appendChild(centerLabel);
 
   const centerName = document.createElement("div");
   centerName.classList.add("t-overflow");
-  centerName.innerText = name;
+  // centerName.innerText = name;
+  const nameTextNode = document.createTextNode(name);
+  centerName.appendChild(nameTextNode);
   w60.appendChild(centerName);
 
   //CITY div container
@@ -69,12 +62,16 @@ function createCardElement(name, place, state) {
   w20City.classList.add("w-20");
 
   const cityLabel = document.createElement("div");
-  cityLabel.innerText = "CITY";
+  // cityLabel.innerText = "CITY";
+  const cityLabelTextNode = document.createTextNode('CITY');
+  cityLabel.appendChild(cityLabelTextNode);
   w20City.appendChild(cityLabel);
 
   const cityName = document.createElement("div");
   cityName.classList.add("t-overflow");
-  cityName.innerText = place;
+  // cityName.innerText = place;
+  const cityNameTextNode = document.createTextNode(place);
+  cityName.appendChild(cityNameTextNode);
   w20City.appendChild(cityName);
 
 // STATE div container
@@ -82,12 +79,16 @@ function createCardElement(name, place, state) {
   w20State.classList.add("w-20");
 
   const stateLabel = document.createElement("div");
-  stateLabel.innerText = "STATE";
+  // stateLabel.innerText = "STATE";
+  const stateLabelTextNode = document.createTextNode('STATE');
+  stateLabel.appendChild(stateLabelTextNode);
   w20State.appendChild(stateLabel);
 
   const stateName = document.createElement("div");
   stateName.classList.add("t-overflow");
-  stateName.innerText = state;
+  // stateName.innerText = state;
+  const stateNameTextNode = document.createTextNode(state);
+  stateName.appendChild(stateNameTextNode);
   w20State.appendChild(stateName);
 
   //appending name,city and state onto the parent div
@@ -100,7 +101,7 @@ function createCardElement(name, place, state) {
 
 //handles search button click
 function handleSearchBtnClick() {
-  renderCenters(jsonData, selectedFilter);
+  renderCenters(jsonData);
 }
 
 //handles city button click
@@ -109,6 +110,7 @@ function handleCityBtnClick() {
   cityBtn.classList.add("active");
   stateBtn.classList.remove("active");
   centerBtn.classList.remove("active");
+  renderCenters(jsonData)
 }
 
 //handles state button click
@@ -117,6 +119,7 @@ function handleStateBtnClick() {
   stateBtn.classList.add("active");
   cityBtn.classList.remove("active");
   centerBtn.classList.remove("active");
+  renderCenters(jsonData);
 }
 
 //handles center button click
@@ -125,6 +128,7 @@ function handleCenterBtnClick() {
   centerBtn.classList.add("active");
   stateBtn.classList.remove("active");
   cityBtn.classList.remove("active");
+  renderCenters(jsonData);
 }
 
 //binds events to the buttons
@@ -133,12 +137,27 @@ function bindEvents() {
   cityBtn.addEventListener("click", handleCityBtnClick);
   stateBtn.addEventListener("click", handleStateBtnClick);
   centerBtn.addEventListener("click", handleCenterBtnClick);
+  searchInput.addEventListener('input',function(){
+    renderCenters(jsonData)
+  });
 }
 
 //main function
 function main() {
-  bindEvents();
   getCenters();
+  bindEvents();
+}
+
+//fetching data from the API
+function getCenters() {
+  fetch("https://isro.vercel.app/api/centres")
+  .then((response)=> response.json())
+  .then(data =>{
+    jsonData = data.centres;
+    // console.log('data fetch completed')
+    renderCenters();
+  })
+  .catch(error => console.log(error));
 }
 
 //invokes main when DOM Contents Loaded
