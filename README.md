@@ -1,6 +1,6 @@
 # html-css-js-project-boilerplate
 
-![isro_scr_shot](https://user-images.githubusercontent.com/122960934/227925243-9a6896c3-8634-4940-befc-76426d42b85e.png)
+![isro_proj_scr_shot](https://user-images.githubusercontent.com/122960934/228275010-bf142aff-453e-4e24-835a-ce75739d2e3b.png)
 
 ## Project objective
 
